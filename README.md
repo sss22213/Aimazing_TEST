@@ -10,6 +10,8 @@
 
 1. Create the build directory
 ```bash=
+git clone https://github.com/mfontanini/libtins
+cd libtins
 mkdir build
 cd build
 ```
