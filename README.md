@@ -24,12 +24,14 @@ cmake ../
 make
 sudo make install
 ```
+---
 
 ## Compile sniffing:
 ```bash=
 cd Aimazing_TEST
 make
 ```
+---
 
 ### Test sniffing:
 ```bash=
@@ -39,6 +41,7 @@ ex:
 ```bash=
 bash scripts/test.sh "ens33" log.bin
 ```
+---
 
 ### Test replace:
 ```bash=
@@ -49,3 +52,9 @@ ex: hello world helloworld => hi world hiworld (hello->hi)
 ```bash=
 bash scripts/replace.sh demo_file/test.txt hello hi
 ```
+
+---
+
+## Reference:
+
+[libtins](http://libtins.github.io/)
