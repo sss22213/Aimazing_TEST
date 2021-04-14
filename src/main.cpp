@@ -2,12 +2,9 @@
 #include <tins/tins.h>
 #include <vector>
 #include <stdint.h>
-#include "sniffing.hpp"
 
 using namespace Tins;
 using namespace std;
-
-FILE* pFile;
 
 bool callback(const PDU &pdu) 
 {
@@ -18,7 +15,7 @@ bool callback(const PDU &pdu)
     /* Find payload */
     const RawPDU::payload_type& payload = raw.payload();
     /* Print payload */
-    for(int idx = 0; idx < payload.size(); idx++) {
+    for(long unsigned int idx = 0; idx < payload.size(); idx++) {
         cout << (uint8_t)payload[idx];
     }
     cout << endl;
@@ -27,8 +24,6 @@ bool callback(const PDU &pdu)
 
 int main(int argc, char **argv) 
 {
-    pFile = fopen("file.binary", "wb");
     Sniffer(argv[1]).sniff_loop(callback);
-
     return 0;
 }

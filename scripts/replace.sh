@@ -11,7 +11,7 @@ FILE_PATH=$1
 REPLACE_STR=$2
 STR=$3
 
-NUM=```cat $1 | grep -o $2 | grep -c $2```
-sed -i "s/$REPLACE_STR/$STR/g" $1
+NUM=```cat $FILE_PATH | grep -o $REPLACE_STR | grep -c $REPLACE_STR```
+sed -i "s/$REPLACE_STR/$STR/g" $FILE_PATH
 echo "Replace: $NUM"
-cat $1
+cat $FILE_PATH
