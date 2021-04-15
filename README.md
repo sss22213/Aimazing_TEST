@@ -33,8 +33,3 @@ ex: hello world helloworld => hi world hiworld (hello->hi)
 bash scripts/replace.sh demo_file/test.txt hello hi
 ```
 
----
-
-## Reference:
-
-[libtins](http://libtins.github.io/)
