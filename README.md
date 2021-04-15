@@ -6,28 +6,6 @@
  - Release:	20.04
  - Codename:	focal
 
-## Install dependent(libtins):
-
-1. Create the build directory
-```bash=
-git clone https://github.com/mfontanini/libtins
-cd libtins
-mkdir build
-cd build
-```
-
-2. Configure the project. Add any relevant configuration flags
-```bash=
-cmake ../
-```
-
-3. Compile
-```bash=
-make
-sudo make install
-```
----
-
 ## Compile sniffing:
 ```bash=
 cd Aimazing_TEST
