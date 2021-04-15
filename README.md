@@ -30,7 +30,9 @@ sudo make install
 
 ## Compile sniffing:
 ```bash=
+git clone https://github.com/sss22213/Aimazing_TEST
 cd Aimazing_TEST
+git checkout over_libtins
 make
 ```
 ---
