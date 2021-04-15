@@ -17,7 +17,7 @@ make
 
 ### Test sniffing:
 ```bash=
-bash scripts/test.sh <NETWORK INTERFACE> <FILENAME_FOR_RECORD>
+sudo bash scripts/test.sh <NETWORK INTERFACE> <FILENAME_FOR_RECORD>
 ```
 ex:
 ```bash=
