@@ -11,7 +11,7 @@ fi
 
 rm -f $LOGFILENAME
 # start listen
-sudo build/main $NETWORK_INTERFACE >> $LOGFILENAME &
+sudo build/main $NETWORK_INTERFACE $LOGFILENAME &
 # Send http package
 curl www.google.com.tw
 sleep 2s
