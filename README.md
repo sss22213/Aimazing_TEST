@@ -21,7 +21,7 @@ bash scripts/test.sh <NETWORK INTERFACE> <FILENAME_FOR_RECORD>
 ```
 ex:
 ```bash=
-bash scripts/test.sh "ens33" "log.bin"
+sudo bash scripts/test.sh "ens33" "log.bin"
 ```
 ---
 
