@@ -1,29 +1,17 @@
 #include <iostream>
-#include <tins/tins.h>
-#include <vector>
-#include <stdint.h>
+#include "sniffing.hpp"
 
-using namespace Tins;
-using namespace std;
-
-bool callback(const PDU &pdu) 
+int main(int argc, char **argv)
 {
-    /* Find tcp layer */
-    const TCP &tcp = pdu.rfind_pdu<TCP>(); 
-    /* Find protocol data unit */
-    const RawPDU& raw = tcp.rfind_pdu<RawPDU>();
-    /* Find payload */
-    const RawPDU::payload_type& payload = raw.payload();
-    /* Print payload */
-    for(long unsigned int idx = 0; idx < payload.size(); idx++) {
-        cout << (uint8_t)payload[idx];
+    /* Check number of parameters */
+    if(argc < 2) {
+        printf("Parameter too few\n");
+        return -1;
     }
-    cout << endl;
-    return true;
-}
 
-int main(int argc, char **argv) 
-{
-    Sniffer(argv[1]).sniff_loop(callback);
+    sniffing new_sniffing(argv[1]);
+
+    new_sniffing.get_tcp_package();
+
     return 0;
 }
