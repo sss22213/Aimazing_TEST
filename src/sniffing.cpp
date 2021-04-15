@@ -2,7 +2,7 @@
 
 static int mysocket;
 
-sniffing::sniffing(char* network_interface)
+sniffing::sniffing(char* network_interface, const char *filename)
 {
     /* For bind interface */
     struct ifreq ifr; 
@@ -50,6 +50,13 @@ sniffing::sniffing(char* network_interface)
 
     /* Initialize buffer */
     buffer = new uint8_t[65535];
+
+    /* Open file */
+    pFile = NULL;
+    pFile = fopen(filename, "w+");
+    if (pFile == NULL) {
+        fprintf(stderr, "Open file fail\n");
+    }
 }
 
 sniffing::~sniffing(void)
@@ -62,6 +69,9 @@ sniffing::~sniffing(void)
         free(buffer);
         buffer = NULL;
     }
+
+    /* Close file*/
+    fclose(pFile);
 }
 
 void sniffing::get_tcp_package(void)
@@ -86,7 +96,7 @@ void sniffing::get_tcp_package(void)
 
     while(1) {
 
-        sleep(0.2);
+        sleep(0.01);
 
         /* Receive raw data */
         recv_data_size = recvfrom(mysocket, buffer, 65536, 0, &saddr, (socklen_t *)&saddr_len);
@@ -111,8 +121,13 @@ void sniffing::get_tcp_package(void)
             ptr_tcp_payload = buffer + tcp_paylolad_offset;
             for(int i = 0 ; i < tcp_payload_length ; i++)
             {
-                printf("%c",(unsigned int)ptr_tcp_payload[i]);
-            }  
+                if (pFile != NULL) {
+                    fprintf(pFile, "%c", (unsigned int)ptr_tcp_payload[i]);
+                    fflush(pFile);
+                } else {
+                    printf("%c", (unsigned int)ptr_tcp_payload[i]);
+                }
+            }
         }
     }
 }

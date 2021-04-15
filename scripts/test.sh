@@ -10,12 +10,13 @@ then
 fi
 
 rm -f $LOGFILENAME
+echo "Start"
 # start listen
-sudo build/main $NETWORK_INTERFACE >> $LOGFILENAME &
+sudo build/main $NETWORK_INTERFACE $LOGFILENAME &
 # Send http package
-curl www.google.com.tw
+curl -s www.google.com.tw
 sleep 2s
 # stop listen
 sudo kill -9 ```ps aux | grep build/main | awk '{print $2}'``` > /dev/null
-echo "TEST complete"
+echo "Complete"
  

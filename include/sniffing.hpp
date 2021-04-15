@@ -2,9 +2,9 @@
 #define __SNIFFING_HPP__
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 #include <unistd.h>
-#include <string.h>
+#include <cstring>
 #include <netinet/tcp.h>
 #include <netinet/ip.h>
 #include <sys/socket.h>
@@ -13,7 +13,7 @@
 #include <net/if.h>
 #include <sys/socket.h>
 #include <linux/if_packet.h>
-#include <net/ethernet.h> /* the L2 protocols */
+#include <net/ethernet.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
 
@@ -24,10 +24,11 @@ class sniffing
 {
     private:
         uint8_t *buffer;
+        FILE *pFile;
 
     public:
         /* Initialize and open socket */
-        sniffing(char*);
+        sniffing(char*, const char*);
         
         /* Close socket */
         ~sniffing(void);
