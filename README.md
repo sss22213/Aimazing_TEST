@@ -27,7 +27,7 @@ sudo bash scripts/test.sh "ens33" "log.bin"
 
 ### Test replace:
 ```bash=
-bash scripts/test.sh <FILE PATH> <STRING1> <STRING2>
+bash scripts/replace.sh <FILE PATH> <STRING1> <STRING2>
 ```
 
 ex: hello world helloworld => hi world hiworld (hello->hi)
